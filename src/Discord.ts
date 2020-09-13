@@ -7,6 +7,8 @@ import { Config } from './Config'
 
 import Rcon from './Rcon'
 
+const DISCORD_TOKEN = process.env.BOT_TOKEN
+
 class Discord {
   config: Config
   client: Client
@@ -25,7 +27,7 @@ class Discord {
 
   public async init () {
     try {
-      await this.client.login(this.config.DISCORD_TOKEN)
+      await this.client.login(DISCORD_TOKEN)
       if (this.config.DISCORD_CHANNEL_NAME && !this.config.DISCORD_CHANNEL_ID)
         this.getChannelIdFromName(this.config.DISCORD_CHANNEL_NAME)
     } catch (e) {
